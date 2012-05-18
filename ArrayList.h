@@ -10,18 +10,19 @@ template < class T >
 class ArrayList {
     
     private:
-        int             itsIndex;
-        T               s [MAX_SIZE];
+        int		itsIndex;
+		T *		s [MAX_SIZE];
         
     public:
         
         ArrayList () {
-            itsIndex=-1;
+            itsIndex=0;
         }
         
         void push ( T p ) {
+			s[itsIndex] = new T;
+        	*s[itsIndex]=p;
         	itsIndex++;
-        	s[itsIndex]=p;
         }
         
         T top () {
@@ -30,16 +31,16 @@ class ArrayList {
         
         T get ( int i ) {
             if ( i>=0 && i<=itsIndex ) {
-                return s[i];
+                return *s[i];
             }
-            return s[0];
+            return 0;
         }
         
         T operator[] ( int i ) {
             if ( i>=0 && i<=itsIndex ) {
-                return s[i];
+                return *s[i];
             }
-            return s[0];
+            return 0;
         }
              
         int size () {
@@ -55,17 +56,17 @@ class ArrayList {
         }
         
         int count ( T what ) {
-        	int c=0;
+        	int C=0;
         	for ( int i=0; i<=itsIndex; i++ ) {
-        			if ( s[i]==what )
-        				c++;
+        			if ( *s[i]==what )
+        				C++;
             }
-            return c;
+            return C;
         } 
         
         bool has ( T what ) {
             for ( int i=0; i<=itsIndex; i++ ) {
-                    if ( what==s[i] )
+                    if ( what==*s[i] )
                         return true;
             }
             return false;
@@ -73,7 +74,7 @@ class ArrayList {
         
         int get ( T what ) {
             for ( int i=0; i<=itsIndex; i++ ) {
-                    if ( what==s[i] )
+                    if ( what==*s[i] )
                         return i;
             }
             return -1;
@@ -82,12 +83,12 @@ class ArrayList {
         void remove ( int index ) {
             itsIndex--;
             for ( int i=index; i<=itsIndex; i++ )
-                    s[i]=s[i+1];
+                    *s[i]=*s[i+1];
         }
         
         void removeAll ( T what ) {
             for ( int i=0; i<=itsIndex; ) {
-                if ( what==s[i] )
+                if ( what==*s[i] )
                     remove( i );
                 else
                     i++;
@@ -96,25 +97,14 @@ class ArrayList {
         
         void replace ( T what, T with ) {
             for (int i=0; i<itsIndex; i++)
-                if (what==s[i])
-                    s[i]=with;
+                if (what==*s[i])
+                    *s[i]=with;
         }
         
         void swap ( int one, int two ) {
-            T temp=s[one];
-            s[one]=s[two];
-            s[two]=temp;
-        }
-        
-        void reverse() {
-            T temp[MAX_SIZE];
-            int j=0;
-            for (int i=itsIndex-1; i>=0; i--) {
-                temp[j]=s[i];
-                j++;
-            }
-            for (int i=0; i<itsIndex; i++)
-                s[i]=temp[i];
+            T temp=*s[one];
+            *s[one]=*s[two];
+            *s[two]=temp;
         }
 };
 
