@@ -135,8 +135,10 @@ ArrayList<byte> Bits2Bytes ( ArrayList<bit> l ) {
     ArrayList<byte> b;
     
     for (int i=0; i<l.size()-BYTE_LENGTH; i+=BYTE_LENGTH) {
-        bit a[]= {  l[i], l[i+1], l[i+2], l[i+3], l[i+4], l[i+5], 
-                    l[i+6], l[i+7], l[i+8], l[i+9], l[i+10] };
+        bit a [BYTE_LENGTH];
+		for (int j=0; j<BYTE_LENGTH; j++) { 
+			a[j] = l[i+j];
+		}
         b.push( a );
     }
     
