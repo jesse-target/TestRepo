@@ -1,3 +1,6 @@
+#ifndef _BITSHIFTING_
+#define _BITSHIFTING_
+
 #include <cstdlib>
 
 using namespace std;
@@ -196,4 +199,6 @@ ArrayList<bit> S2B ( string s ) {
     return b;
 }
 
+
+#endif
 

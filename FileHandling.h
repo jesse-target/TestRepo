@@ -1,3 +1,5 @@
+#ifndef _FILEHANDLING_
+#define _FILEHANDLING_
 
 // I want to have a function which opens a text file and converts it to a string
 
@@ -20,3 +22,5 @@ void S2F ( string fileName, string s ) {
     f << s;
     f.close();
 }
+
+#endif
