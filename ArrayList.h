@@ -83,7 +83,7 @@ public:
 	void remove ( int index ) {
 		itsIndex--;
 		for ( int i=index; i<=itsIndex; i++ )
-		*s[i]=*s[i+1];
+		s[i]=s[i+1];
 	}
 	
 	void removeAll ( T what ) {
